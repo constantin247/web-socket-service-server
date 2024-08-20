@@ -1,0 +1,6 @@
+export type InterviewCreateInput = {
+  endTime?: Date | null;
+  isCancelled?: boolean | null;
+  startTime?: Date | null;
+  tokens?: string | null;
+};

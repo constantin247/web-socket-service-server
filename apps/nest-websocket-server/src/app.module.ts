@@ -1,4 +1,7 @@
 import { Module } from "@nestjs/common";
+import { InterviewStageModule } from "./interviewStage/interviewStage.module";
+import { InterviewModule } from "./interview/interview.module";
+import { DynamicTemplateModule } from "./dynamicTemplate/dynamicTemplate.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -11,6 +14,9 @@ import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 @Module({
   controllers: [],
   imports: [
+    InterviewStageModule,
+    InterviewModule,
+    DynamicTemplateModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,
