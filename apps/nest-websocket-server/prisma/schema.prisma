@@ -6,3 +6,36 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model InterviewStage {
+  createdAt         DateTime         @default(now())
+  dynamicTemplate   DynamicTemplate? @relation(fields: [dynamicTemplateId], references: [id])
+  dynamicTemplateId String?
+  dynamicTemplateId String?
+  id                String           @id @default(cuid())
+  isQuestionLimited Boolean?
+  isTimeLimited     Boolean?
+  numberOfQuestions Int?
+  preperationTime   Int?
+  promptTemplate    String?
+  stageNumber       Int?
+  updatedAt         DateTime         @updatedAt
+}
+
+model Interview {
+  createdAt   DateTime  @default(now())
+  endTime     DateTime?
+  id          String    @id @default(cuid())
+  isCancelled Boolean?
+  startTime   DateTime?
+  tokens      String?
+  updatedAt   DateTime  @updatedAt
+}
+
+model DynamicTemplate {
+  createdAt       DateTime         @default(now())
+  id              String           @id @default(cuid())
+  interviewStages InterviewStage[]
+  prompt          String?
+  updatedAt       DateTime         @updatedAt
+}
